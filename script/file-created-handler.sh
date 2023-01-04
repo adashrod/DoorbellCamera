@@ -11,11 +11,17 @@ haVideoDir=`cat ${scriptDir}/../haVideoDir.txt`
 webhookId=`cat ${scriptDir}/../webhookIdMotionVideo.txt`
 idFile=`cat ${scriptDir}/../idFile.txt`
 
-scp -i ${idFile} $1 ${haUnixUser}@${haServerIp}:${haVideoDir}/latestMotionVideo.mp4
 
-if [ $? -eq 0 ]; then
-    echo "calling motion webhook"
-    curl -i -X POST http://${haServerIp}:${haServerPort}/api/webhook/${webhookId}
+if [[ "$1" == *"mp4" ]]; then
+    scp -i ${idFile} $1 ${haUnixUser}@${haServerIp}:${haVideoDir}/latestMotionVideo.mp4
+
+    if [ $? -eq 0 ]; then
+        echo "calling motion webhook"
+        curl -i -X POST http://${haServerIp}:${haServerPort}/api/webhook/${webhookId}
+    else
+        echo "something went wrong sending file"
+    fi
 else
-    echo "something went wrong sending file"
+    echo "created file is not a video, ignoring"
 fi
+
