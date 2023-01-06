@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# event handler for file creation in MotionEye
+
 echo "`date +"%Y-%m-%dT%H-%M-%S"` motion event handler: $1"
 
 scriptDir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
