@@ -5,4 +5,4 @@ haServerIp=`cat $scriptDir/../haServerIp.txt`
 haServerPort=`cat $scriptDir/../haServerPort.txt`
 webhookId=`cat $scriptDir/../webhookIdPress.txt`
 
-python3 src/rpi-main.py ${haServerIp}:${haServerPort} ${webhookId}
+python3 ${scriptDir}/../src/rpi-main.py ${haServerIp}:${haServerPort} ${webhookId}
