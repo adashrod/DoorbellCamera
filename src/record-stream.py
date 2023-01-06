@@ -9,7 +9,7 @@ def do_ffmpeg(streamUrl, frameRate, length, fileName):
 #    note: log is not in scope in this function
     proc = subprocess.Popen(["ffmpeg",
         "-f", "mjpeg",
-        "-framerate", "5", # must match framerate of the video stream
+        "-framerate", frameRate, # must match framerate of the video stream
         "-i" , streamUrl,
         "-t", length,
         "-y",
