@@ -12,14 +12,14 @@ def do_ffmpeg(streamUrl, frameRate, length, fileName):
         "-framerate", frameRate, # must match framerate of the video stream
         "-i" , streamUrl,
         "-t", length,
-        "-y",
+        "-y", # overwrite
         f"www/videos/{fileName}"])
     # causes the process to block, ensuring that the event fires after the recording finishes
     proc.communicate()
 
 @service
 def record_stream_ffmpeg(streamUrl, frameRate, length, fileName):
-    """Records the video stream for a specified time, writes the file to "www/videos/latestOnDemandVideo.mp4" and
+    """Records the video stream for a specified time, writes the file to "www/videos/{fileName}" and
     fires an event "on_demand_video_ready"
     
     Parameters
