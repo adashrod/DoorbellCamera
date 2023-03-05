@@ -1,3 +1,4 @@
+import os
 import requests
 import RPi.GPIO as Gpio
 import subprocess
@@ -7,12 +8,15 @@ import time
 assert len(sys.argv) > 2, "Home Assistant hostname must be passed as the 1st argument, and Webhook ID must be passed as the 2nd argument"
 
 debounceTime = 5000
-ledPin = 4
-buttonPin = 17
-#ringtone = "src/ringtones/ClosedHiHat.mp3"
-#ringtone = "src/ringtones/DrumFill.mp3"
-ringtone = "src/ringtones/DingDong0sPad.mp3"
-#ringtone = "src/ringtones/Silence5s.mp3"
+ledPin = 7
+buttonPin = 26
+
+srcDir = os.path.dirname(__file__)
+
+#ringtone = f"{srcDir}/ringtones/ClosedHiHat.mp3"
+#ringtone = f"{srcDir}/ringtones/DrumFill.mp3"
+ringtone = f"{srcDir}/ringtones/DingDong0sPad.mp3"
+#ringtone = f"{srcDir}/ringtones/Silence5s.mp3"
 lastRingTimestamp = 0
 webhookUrl = f"http://{sys.argv[1]}/api/webhook/{sys.argv[2]}"
 
