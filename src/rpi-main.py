@@ -1,9 +1,9 @@
 import os
 import requests
 import RPi.GPIO as Gpio
-import subprocess
 import sys
 import time
+import vlc
 
 assert len(sys.argv) > 2, "Home Assistant hostname must be passed as the 1st argument, and Webhook ID must be passed as the 2nd argument"
 
@@ -20,8 +20,11 @@ ringtone = f"{srcDir}/ringtones/DingDong0sPad.mp3"
 lastRingTimestamp = 0
 webhookUrl = f"http://{sys.argv[1]}/api/webhook/{sys.argv[2]}"
 
+vlcPlayer = vlc.MediaPlayer(f"file://{ringtone}")
+
 def onPress(channel):
     global lastRingTimestamp # makes the global variable available in this scope, preventing shadowing
+    global vlcPlayer
     print(f"onPress last={lastRingTimestamp}")
     now = time.time() * 1000
     if now - lastRingTimestamp < debounceTime:
@@ -29,11 +32,11 @@ def onPress(channel):
         return
     lastRingTimestamp = now
     Gpio.output(ledPin, Gpio.HIGH)
-    # when using run(), the onPress callback fires twice, causing the ringtone to play twice
-    # subprocess.run(["cvlc", ringtone, "vlc://quit"])
-    subprocess.Popen(["cvlc", ringtone, "vlc://quit"])
+    # necessary to play multiple times
+    vlcPlayer.stop()
+    vlcPlayer.play()
     requests.post(webhookUrl)
-    # Popen() doesn't block, so keep the LED on for 2s
+    # play() doesn't block, so keep the LED on for a couple of seconds
     time.sleep(2.0)
     Gpio.output(ledPin, Gpio.LOW)
     print("end onPress")
