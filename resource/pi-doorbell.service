@@ -5,6 +5,7 @@ After=network.target
 [Service]
 ExecStart=/home/doorb/Applications/DoorbellCamera/script/button-handler.sh
 Restart=always
+StandardOutput=append:/var/log/doorbell.log
 
 [Install]
 WantedBy=multi-user.target
