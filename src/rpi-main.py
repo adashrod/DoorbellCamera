@@ -49,6 +49,11 @@ Gpio.setup(ledPin, Gpio.OUT)
 Gpio.setup(buttonPin, Gpio.IN, pull_up_down=Gpio.PUD_DOWN)
 
 Gpio.add_event_detect(buttonPin, Gpio.RISING, callback=onPress)
-message = input("Press Enter to quit\n")
+#message = input("Press Enter to quit\n")
 
-Gpio.cleanup()
+try:
+    while True:
+        pass
+finally:
+    print("cleaning up")
+    Gpio.cleanup()
