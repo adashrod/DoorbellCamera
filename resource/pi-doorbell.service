@@ -1,0 +1,11 @@
+[Unit]
+Description=Listen for button presses on the GPIO to send doorbell events
+After=network.target
+
+[Service]
+ExecStart=/home/doorb/Applications/DoorbellCamera/script/button-handler.sh
+Restart=always
+User=doorb
+
+[Install]
+WantedBy=multi-user.target
