@@ -11,3 +11,48 @@
 Camera: Raspberry Pi NoIR Camera Module V2
 
 MotionEyeOs camera: Camera type: Local V4L2, Camera: MMAL
+
+## Install the daemon
+
+Copy the systemd config file to the user's service directory
+
+```bash
+$ # install
+$ mkdir ~/.config/systemd/user
+$ cp resource/pi-doorbell.service ~/.config/systemd/user/
+$ # create log file and change owner
+$ sudo touch /var/log/doorbell.log
+$ sudo chown <user>:<user> /var/log/doorbell.log
+$ sudo chmod 664 /var/log/doorbell.log
+$ # turn service on
+$ systemctl --user enable pi-doorbell.service
+$ systemctl --user start pi-doorbell.service
+$ # check status
+$ systemctl --user status pi-doorbell.service
+$ journalctl --user-unit pi-doorbell.service
+```
+
+### Install Health Checker
+
+```bash
+$ crontab -e
+$ # add an entry for the full path to script/check-daemon.sh
+```
+
+## Runtime Configuration Files
+
+#### These are used for storing configuration data used by various scripts. The scripts expect them to be in the main directory of the repo
+
+|file|contents|use|
+|-|-|-|
+|doorbellOnlineVarName.txt|name of variable for key-value storage|store result of check-health.sh|
+|haServerIp.txt|IP of Home Assistant|for triggering webhooks|
+|haServerPort.txt|port of HA||
+|haUnixUser.txt|unix user on HA instance|for using scp to send videos to HA|
+|haVideoDir.txt|directory where HA finds received videos||
+|idFile.txt|name of ID file for SSH|scp|
+|kvServerIp.txt|IP of key-value server|storing result of check-health.sh||
+|kvServerPort.txt|port of KV||
+|webhookIdHealthAlert.txt|HA webhook ID|triggered when check-health.sh detects a failure|
+|webhookIdMotionVideo.txt|HA webhook ID|triggered by ME when a motion video has been captured|
+|webhookIdPress.txt|HA webhook ID|triggered by rpi-main.py on button press|
