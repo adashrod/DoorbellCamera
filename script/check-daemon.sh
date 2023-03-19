@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# health check script to ensure that button-handler.sh is running. button-handler.sh should be installed as a systemd
+# service using `/resource/pi-doorbell.service`
+
 # necessary because cron doesn't have a full shell with env vars
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/"$(id -u "$LOGNAME")"/bus
 export XDG_RUNTIME_DIR=/run/user/"$(id -u "$LOGNAME")"
