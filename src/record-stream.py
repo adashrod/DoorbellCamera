@@ -21,7 +21,7 @@ def do_ffmpeg(streamUrl, frameRate, length, fileName):
 def record_stream_ffmpeg(streamUrl, frameRate, length, fileName):
     """Records the video stream for a specified time, writes the file to "www/videos/{fileName}" and
     fires an event "on_demand_video_ready"
-    
+
     Parameters
     ----------
     streamUrl : str
