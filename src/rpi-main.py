@@ -54,7 +54,7 @@ Gpio.add_event_detect(buttonPin, Gpio.RISING, callback=onPress)
 
 try:
     while True:
-        pass
+        time.sleep(60.0)
 finally:
     print("cleaning up")
     Gpio.cleanup()
