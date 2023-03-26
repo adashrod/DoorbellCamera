@@ -48,8 +48,9 @@ Gpio.setwarnings(False)
 Gpio.setup(ledPin, Gpio.OUT)
 Gpio.setup(buttonPin, Gpio.IN, pull_up_down=Gpio.PUD_DOWN)
 
+Gpio.output(ledPin, Gpio.LOW)
+
 Gpio.add_event_detect(buttonPin, Gpio.RISING, callback=onPress)
-#message = input("Press Enter to quit\n")
 
 try:
     while True:
