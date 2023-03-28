@@ -47,11 +47,12 @@ $ # add an entry for the full path to script/check-daemon.sh
 |doorbellOnlineVarName.txt|name of variable for key-value storage|store result of check-health.sh|
 |haServerIp.txt|IP of Home Assistant|for triggering webhooks|
 |haServerPort.txt|port of HA||
-|haUnixUser.txt|unix user on HA instance|for using scp to send videos to HA|
-|haVideoDir.txt|directory where HA finds received videos||
-|idFile.txt|name of ID file for SSH|scp|
 |kvServerIp.txt|IP of key-value server|storing result of check-health.sh||
 |kvServerPort.txt|port of KV||
+|motionEyeServerIp.txt|IP of MotionEye|for constructing URLs in webhook payloads|
+|motionEyeServerPort.txt|port of ME||
 |webhookIdHealthAlert.txt|HA webhook ID|triggered when check-health.sh detects a failure|
 |webhookIdMotionVideo.txt|HA webhook ID|triggered by ME when a motion video has been captured|
 |webhookIdPress.txt|HA webhook ID|triggered by rpi-main.py on button press|
+|cameraDir.txt|directory where ME stores files||
+|cameraId.txt|numeric ID of the camera||
