@@ -31,6 +31,12 @@ $ systemctl --user status pi-doorbell.service
 $ journalctl --user-unit pi-doorbell.service
 ```
 
+### Install [bluetooth-autoconnect](https://github.com/jrouleau/bluetooth-autoconnect)
+
+Once the desktop is disabled, Raspberry Pi OS might not automatically reconnect to trusted, paired bluetooth devices at boot.
+
+Follow installation instructions and enable as a daemon using `systemctl`
+
 ### Install Health Checker
 
 ```bash
