@@ -17,6 +17,7 @@ Copy the systemd config file to the user's service directory
 
 ```bash
 $ # install
+$ pip3 install python-vlc
 $ mkdir ~/.config/systemd/user
 $ cp resource/pi-doorbell.service ~/.config/systemd/user/
 $ # create log file and change owner
