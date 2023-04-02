@@ -9,7 +9,7 @@
 ## Configurations
 Camera: Raspberry Pi NoIR Camera Module V2
 
-MotionEyeOs camera: Camera type: Local V4L2, Camera: MMAL
+MotionEyeOs camera: Camera type: Local V4L2, Camera: MMAL (Need to enable "Legacy Camera" in `raspi-config` first)
 
 ## Install the daemon
 
