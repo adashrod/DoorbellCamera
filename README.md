@@ -9,7 +9,7 @@
 ## Configurations
 Camera: Raspberry Pi NoIR Camera Module V2
 
-MotionEyeOs camera: Camera type: Local V4L2, Camera: MMAL
+MotionEyeOs camera: Camera type: Local V4L2, Camera: MMAL (Need to enable "Legacy Camera" in `raspi-config` first)
 
 ## Install the daemon
 
@@ -20,6 +20,7 @@ Copy the systemd config files to the user's service directory
 
 ```bash
 $ # install
+$ pip3 install python-vlc
 $ mkdir ~/.config/systemd/user
 $ cp resource/pi-doorbell.service ~/.config/systemd/user/
 $ cp resource/speaker-keep-alive.service ~/.config/systemd/user/
@@ -38,6 +39,12 @@ $ systemctl --user status speaker-keep-alive.service
 $ journalctl --user-unit pi-doorbell.service
 $ journalctl --user-unit speaker-keep-alive.service
 ```
+
+### Install [bluetooth-autoconnect](https://github.com/jrouleau/bluetooth-autoconnect)
+
+Once the desktop is disabled, Raspberry Pi OS might not automatically reconnect to trusted, paired bluetooth devices at boot.
+
+Follow installation instructions and enable as a daemon using `systemctl`
 
 ### Install Health Checker
 
