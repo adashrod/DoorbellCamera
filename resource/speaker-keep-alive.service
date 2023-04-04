@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodically play a silent audio file to prevent a bluetooth speaker from shutting off due to inactivity
+After=network.target
+
+[Service]
+ExecStart=/home/doorb/Applications/DoorbellCamera/script/speaker-keep-alive.sh
+Restart=always
+StandardOutput=append:/var/log/doorbell.log
+
+[Install]
+WantedBy=default.target

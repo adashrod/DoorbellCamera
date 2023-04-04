@@ -13,22 +13,30 @@ MotionEyeOs camera: Camera type: Local V4L2, Camera: MMAL
 
 ## Install the daemon
 
-Copy the systemd config file to the user's service directory
+Copy the systemd config files to the user's service directory
+
+`pi-doorbell`: the daemon that listens for button presses
+`speaker-keep-alive`: a daemon that regularly plays inaudible sound files on a bluetooth speaker to prevent auto-shut off
 
 ```bash
 $ # install
 $ mkdir ~/.config/systemd/user
 $ cp resource/pi-doorbell.service ~/.config/systemd/user/
+$ cp resource/speaker-keep-alive.service ~/.config/systemd/user/
 $ # create log file and change owner
 $ sudo touch /var/log/doorbell.log
 $ sudo chown <user>:<user> /var/log/doorbell.log
 $ sudo chmod 664 /var/log/doorbell.log
-$ # turn service on
+$ # turn services on
 $ systemctl --user enable pi-doorbell.service
 $ systemctl --user start pi-doorbell.service
+$ systemctl --user enable speaker-keep-alive.service
+$ systemctl --user start speaker-keep-alive.service
 $ # check status
 $ systemctl --user status pi-doorbell.service
+$ systemctl --user status speaker-keep-alive.service
 $ journalctl --user-unit pi-doorbell.service
+$ journalctl --user-unit speaker-keep-alive.service
 ```
 
 ### Install Health Checker
