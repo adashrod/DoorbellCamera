@@ -1,0 +1,11 @@
+[Unit]
+Description=Run a Node server to receive webhooks and trigger jobs
+After=network.target
+
+[Service]
+ExecStart=/home/doorb/Applications/DoorbellCamera/script/wh-server.sh
+Restart=always
+StandardOutput=append:/var/log/doorbell.log
+
+[Install]
+WantedBy=default.target

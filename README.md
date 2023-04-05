@@ -11,7 +11,7 @@ Camera: Raspberry Pi NoIR Camera Module V2
 
 MotionEyeOs camera: Camera type: Local V4L2, Camera: MMAL (Need to enable "Legacy Camera" in `raspi-config` first)
 
-## Install the daemon
+## Install the daemons
 
 Copy the systemd config files to the user's service directory
 
@@ -38,6 +38,16 @@ $ systemctl --user status pi-doorbell.service
 $ systemctl --user status speaker-keep-alive.service
 $ journalctl --user-unit pi-doorbell.service
 $ journalctl --user-unit speaker-keep-alive.service
+```
+
+### Optional: install webhook server daemon
+
+```bash
+$ cp resource/wh-server.service ~/.config/systemd/user/
+$ systemctl --user enable wh-server.service
+$ systemctl --user start wh-server.service
+$ systemctl --user status wh-server.service
+$ journalctl --user-unit wh-server.service
 ```
 
 ### Install [bluetooth-autoconnect](https://github.com/jrouleau/bluetooth-autoconnect)
