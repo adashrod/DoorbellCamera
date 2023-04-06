@@ -15,8 +15,10 @@ srcDir = os.path.dirname(__file__)
 
 #ringtone = f"{srcDir}/ringtones/ClosedHiHat.mp3"
 #ringtone = f"{srcDir}/ringtones/DrumFill.mp3"
-ringtone = f"{srcDir}/ringtones/DingDong0sPad.mp3"
+#ringtone = f"{srcDir}/ringtones/DingDong.mp3"
 #ringtone = f"{srcDir}/ringtones/Silence5s.mp3"
+#ringtone = f"{srcDir}/ringtones/StarTrekTngDoorChime.mp3"
+ringtone = f"{srcDir}/ringtones/DefaultRingtone.mp3"
 lastRingTimestamp = 0
 webhookUrl = f"http://{sys.argv[1]}/api/webhook/{sys.argv[2]}"
 
