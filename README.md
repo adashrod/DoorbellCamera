@@ -16,6 +16,7 @@ MotionEyeOs camera: Camera type: Local V4L2, Camera: MMAL (Need to enable "Legac
 Copy the systemd config files to the user's service directory
 
 `pi-doorbell`: the daemon that listens for button presses
+
 `speaker-keep-alive`: a daemon that regularly plays inaudible sound files on a bluetooth speaker to prevent auto-shut off
 
 ```bash
@@ -41,6 +42,8 @@ $ journalctl --user-unit speaker-keep-alive.service
 ```
 
 ### Optional: install webhook server daemon
+
+`wh-server`: a node server with a webhook endpoint. Triggering the webhook starts an ffmpeg job to record from a camera livestream.
 
 ```bash
 $ cp resource/wh-server.service ~/.config/systemd/user/
