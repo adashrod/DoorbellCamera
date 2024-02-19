@@ -7,7 +7,6 @@ const port = 3000;
 
 /*
 todo:
-- create systemd service
 - make some 30s videos and compare performance between this and express
 */
 
@@ -21,7 +20,7 @@ todo:
  * body: {
  *     frameRate: string | number, // expected frame rate of stream
  *     length: string | number, // seconds to record, max 15
- *     streamUrl: string | number, // live stream URL
+ *     streamUrl: string, // live stream URL
  *     fileName: string, // absolute path, where to save
  *     callback: string, // webhook to call on success
  *     error: string, // webhook to call on failure
