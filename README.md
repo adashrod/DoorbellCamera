@@ -84,3 +84,4 @@ $ # add an entry for the full path to script/check-daemon.sh
 |webhookIdPress.txt|HA webhook ID|triggered by rpi-main.py on button press|
 |cameraDir.txt|directory where ME stores files||
 |cameraId.txt|numeric ID of the camera||
+|btSpeakerMacAddress.txt|MAC address of bluetooth speaker|used by speaker-keep-alive.sh to reconnect to the speaker|
