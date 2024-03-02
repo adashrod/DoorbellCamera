@@ -31,6 +31,7 @@ tryToPlayOrReconnect() {
         then
             echo "speaker-keep-alive: attempting to reconnect"
             bluetoothctl connect $macAddress
+            sleep 10
             tryToPlayOrReconnect "power"
         elif [ $1 = "power" ]
         then
@@ -38,6 +39,7 @@ tryToPlayOrReconnect() {
             bluetoothctl power off
             sleep 10
             bluetoothctl power on
+            sleep 10
             tryToPlayOrReconnect "reboot"
         elif [ $1 = "reboot" ]
         then
