@@ -42,6 +42,7 @@ $ systemctl --user start wifi-keep-alive.service
 $ # check status
 $ systemctl --user status pi-doorbell.service
 $ systemctl --user status speaker-keep-alive.service
+$ systemctl --user status wifi-keep-alive.service
 $ journalctl --user-unit pi-doorbell.service
 $ journalctl --user-unit speaker-keep-alive.service
 $ journalctl --user-unit wifi-keep-alive.service
