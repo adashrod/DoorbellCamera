@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodically check the internet connection and restart wifi or reboot to reconnect
+After=network.target
+
+[Service]
+ExecStart=/home/doorb/Applications/DoorbellCamera/script/wifi-keep-alive.sh
+Restart=always
+StandardOutput=append:/var/log/doorbell.log
+
+[Install]
+WantedBy=default.target

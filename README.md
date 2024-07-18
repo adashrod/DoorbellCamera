@@ -19,12 +19,15 @@ Copy the systemd config files to the user's service directory
 
 `speaker-keep-alive`: a daemon that regularly plays inaudible sound files on a bluetooth speaker to prevent auto-shut off
 
+`wifi-keep-alive`: a daemon that regularly checks the internet connection and reconnects or reboots if necessary
+
 ```bash
 $ # install
 $ pip3 install python-vlc
 $ mkdir ~/.config/systemd/user
 $ cp resource/pi-doorbell.service ~/.config/systemd/user/
 $ cp resource/speaker-keep-alive.service ~/.config/systemd/user/
+$ cp resource/wifi-keep-alive.service ~/.config/systemd/user/
 $ # create log file and change owner
 $ sudo touch /var/log/doorbell.log
 $ sudo chown <user>:<user> /var/log/doorbell.log
@@ -34,11 +37,14 @@ $ systemctl --user enable pi-doorbell.service
 $ systemctl --user start pi-doorbell.service
 $ systemctl --user enable speaker-keep-alive.service
 $ systemctl --user start speaker-keep-alive.service
+$ systemctl --user enable wifi-keep-alive.service
+$ systemctl --user start wifi-keep-alive.service
 $ # check status
 $ systemctl --user status pi-doorbell.service
 $ systemctl --user status speaker-keep-alive.service
 $ journalctl --user-unit pi-doorbell.service
 $ journalctl --user-unit speaker-keep-alive.service
+$ journalctl --user-unit wifi-keep-alive.service
 ```
 
 ### Optional: install webhook server daemon

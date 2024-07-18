@@ -15,7 +15,7 @@ macAddress=$(cat Applications/DoorbellCamera/btSpeakerMacAddress.txt)
 # 1: reconnecting to the speaker
 # 2: power-cycling the speaker
 # 3: rebooting the machine
-# @param $1 step to attempt if disconnected
+# @param $1 step to attempt if disconnected (connect|power|reboot)
 tryToPlayOrReconnect() {
     # info prints <not available> when the device is unpaired,
     # <Connected: yes> when connected
